@@ -24,12 +24,20 @@ describe('Thermostat', function() {
     thermostat.decrease();
     }
     expect(thermostat.decrease).toThrowError(TypeError, "You reached the minimum temprature!");
-    });
+  });
 
-  it('Checks the Power saving maxiimum temprature', function() {
+  it('Checks the Power saving maximum temprature', function() {
     for (i = 0; i < 5; i++) {
     thermostat.increase();
     }
-    expect(thermostat.increase).toThrowError(TypeError, "You reached the maxiimum temprature!");
-    });
+    expect(thermostat.increase).toThrowError(TypeError, "You reached the maximum temprature!");
+  });
+
+  it('Turns off powersave mode', function() {
+    thermostat.off();
+    expect(thermostat.PSM).toEqual(false);
+    expect(thermostat.MaxTemp).toEqual(32);
+  });
+
+
 });
