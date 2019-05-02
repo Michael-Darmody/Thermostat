@@ -10,34 +10,39 @@ describe('Thermostat', function() {
   });
 
   it('Increases the temprature by 1 degree', function() {
-    thermostat.increase();
+    thermostat.up();
     expect(thermostat.temp).toEqual(21);
   });
 
   it('Decreases the temprature by 1 degree', function() {
-    thermostat.decrease();
+    thermostat.down();
     expect(thermostat.temp).toEqual(19);
   });
 
   it('Checks the minimum temprature', function() {
     for (i = 0; i < 10; i++) {
-    thermostat.decrease();
+    thermostat.down();
     }
-    expect(thermostat.decrease).toThrowError(TypeError, "You reached the minimum temprature!");
+    expect(thermostat.down).toThrowError(TypeError, "You reached the minimum temprature!");
   });
 
   it('Checks the Power saving maximum temprature', function() {
     for (i = 0; i < 5; i++) {
-    thermostat.increase();
+    thermostat.up();
     }
-    expect(thermostat.increase).toThrowError(TypeError, "You reached the maximum temprature!");
+    expect(thermostat.up).toThrowError(TypeError, "You reached the maximum temprature!");
   });
 
   it('Turns off powersave mode', function() {
-    thermostat.off();
+    thermostat.PSMoff();
     expect(thermostat.PSM).toEqual(false);
     expect(thermostat.MaxTemp).toEqual(32);
   });
 
-
+  it('Turns on powersave mode', function() {
+    thermostat.PSMoff();
+    thermostat.PSMon();
+    expect(thermostat.PSM).toEqual(true);
+    expect(thermostat.MaxTemp).toEqual(25);
+  });
 });

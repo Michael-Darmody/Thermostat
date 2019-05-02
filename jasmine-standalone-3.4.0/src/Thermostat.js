@@ -5,21 +5,26 @@ function Thermostat() {
   this.PSM = true
 };
 
-Thermostat.prototype.increase = function() {
+Thermostat.prototype.up = function() {
   if(this.temp === this.MaxTemp){
     throw new TypeError ("You reached the maximum temprature!");
   };
     this.temp = this.temp + 1
 };
 
-Thermostat.prototype.decrease = function() {
+Thermostat.prototype.down = function() {
   if(this.temp === this.MinTemp){
     throw new TypeError ("You reached the minimum temprature!");
   };
     this.temp = this.temp - 1
   };
 
-Thermostat.prototype.off = function() {
+Thermostat.prototype.PSMoff = function() {
   this.PSM = false
   this.MaxTemp = 32
+};
+
+Thermostat.prototype.PSMon = function() {
+  this.PSM = true
+  this.MaxTemp = 25
 };
